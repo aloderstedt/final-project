@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center-stuff {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#nav-links {
+  margin-top: 3%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.newses {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.main-schema {
+  background-image: url("Images/GameBackground.jpg");
+} 
+
+.images {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.button-group-stuff {
+  width: 100%;
+}
+
+.search {
+  display: inline-block;
+    height: 83%;
+    position: absolute;
+  border-radius: 20px;
+    background: #e3e3e3;
+    box-shadow: inset 30px 30px 60px #848484,
+      inset -30px -30px 60px #ffffff;
+      
+}
+
+.journal-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.legacy-list {
+  border-radius: 20px;
+    background: #0dba38;
+    box-shadow: inset 30px 30px 60px #086c20,
+      inset -30px -30px 60px #12ff50;
+display: inline-block;
+  height: 83%;
+  position: absolute;
+}
+
+.goals-list {
+  display: inline-block;
+    height: 83%;
+    position: absolute;
+    border-radius: 20px;
+      background: #070ff2;
+      box-shadow: inset -30px 30px 60px #04098c,
+        inset 30px -30px 60px #0a15ff;
 }
