@@ -29,24 +29,30 @@
   width: 100%;
 }
 
-.search {
+.journal-lists {
   display: inline-block;
+    height: 83%;
+    
+  border-radius: 20px;
+    background-color: rgba(147, 149, 156, 0.9);
+    overflow-y: auto
+}
+
+.search {
+   display: inline-block;
     height: 83%;
     position: absolute;
   border-radius: 20px;
-    background: #e3e3e3;
-    box-shadow: inset 30px 30px 60px #848484,
-      inset -30px -30px 60px #ffffff;
-      
+    background-color: rgba(147, 149, 156, 0.9);
+    overflow-y: auto
 }
 
 .journal-layout {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.legacy-list {
+/* .legacy-list {
   border-radius: 20px;
     background: #0dba38;
     box-shadow: inset 30px 30px 60px #086c20,
@@ -54,9 +60,9 @@
 display: inline-block;
   height: 83%;
   position: absolute;
-}
+} */
 
-.goals-list {
+/* .goals-list {
   display: inline-block;
     height: 83%;
     position: absolute;
@@ -64,4 +70,4 @@ display: inline-block;
       background: #070ff2;
       box-shadow: inset -30px 30px 60px #04098c,
         inset 30px -30px 60px #0a15ff;
-}
+} */

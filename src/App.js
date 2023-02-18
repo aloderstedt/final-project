@@ -1,16 +1,18 @@
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import Root from './Routes/Root';
-import Contact from './Routes/Contact';
 import 'bootstrap/dist/css/bootstrap.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 //import Alert from 'react-bootstrap/Alert';
 //import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+//import GamePage from './Components/GamePage';
 import NotFound from './Routes/NotFound';
 import News from './Routes/News';
 import GameDetail from './Components/GameDetail';
+import SearchGame from './Routes/SearchGame';
+// import SearchResults from './Components/SearchResults';
 
 
 
@@ -19,18 +21,18 @@ function App() {
     <div>
       <Container id='nav-links' className='center-stuff'>
         <ButtonGroup className='button-group-stuff'>
-          <Button variant='outline-primary'><Link className='text-white' to="/Journal"><strong>Journal</strong></Link></Button>
-          <Button variant='outline-success'><Link className='text-white' to="/News"><strong>News</strong></Link></Button>
-          <Button variant='outline-danger'><Link className='text-white' to="/Contact"><strong>Contact</strong></Link></Button>
+          <Button variant='outline-primary'><Link className='text-white' to="/journal"><strong>Journal</strong></Link></Button>
+          <Button variant='outline-success'><Link className='text-white' to="/news"><strong>News</strong></Link></Button>
+          <Button variant='outline-danger'><Link className='text-white' to="/searchgame"><strong>Search Game</strong></Link></Button>
         </ButtonGroup>
       </Container>
       <Container>
-      <Routes>
-      <Route path='/' element={ <Root /> } />
-      <Route path='/News' element={ <News /> } />
-        <Route path='Contact' element={<Contact />} />
-        <Route path='/game/:id' element={<GameDetail />} />
-        <Route path='*' element={<NotFound />} />
+        <Routes>
+          <Route path='/' element={<Root />} />
+          <Route path='/news' element={ <News /> } />
+          <Route path='/searchgame' element={<SearchGame />} />
+          <Route path='/searchgame/:id' element={<GameDetail />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>
     </div>

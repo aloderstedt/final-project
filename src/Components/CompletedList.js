@@ -5,8 +5,9 @@ export const CompletedList = () => {
     //const [game, updateGame] = useState([]);
     
     return (
-        <div className="col-2 bg-dark legacy-list">
-            <h1 className="center-stuff text-light">Completed</h1>
+        <div className="col-4 journal-lists">
+            <h1 className="center-stuff">Completed</h1>
+            <hr></hr>
         </div>
     );
 };
