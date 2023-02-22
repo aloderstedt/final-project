@@ -5,13 +5,18 @@ import 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { GameContextProvider } from './GameContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    {/* Context provider to share the current selected game state! */}
+    <GameContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </GameContextProvider>
+
   </React.StrictMode>
 );
 

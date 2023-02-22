@@ -6,13 +6,16 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 //import Alert from 'react-bootstrap/Alert';
 //import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
+// import SearchResults from './Components/SearchResults';
 //import GamePage from './Components/GamePage';
+import Container from 'react-bootstrap/Container';
 import NotFound from './Routes/NotFound';
 import News from './Routes/News';
 import GameDetail from './Components/GameDetail';
 import SearchGame from './Routes/SearchGame';
-// import SearchResults from './Components/SearchResults';
+import CompletedGame from './Components/CompletedGame';
+import BacklogGame from './Components/BacklogGame';
+
 
 
 
@@ -32,6 +35,8 @@ function App() {
           <Route path='/news' element={ <News /> } />
           <Route path='/searchgame' element={<SearchGame />} />
           <Route path='/searchgame/:id' element={<GameDetail />} />
+          <Route path='/completed/:id' element={<CompletedGame />} />
+          <Route path='/backlog/:id' element={<BacklogGame />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>

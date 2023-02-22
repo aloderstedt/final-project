@@ -6,7 +6,9 @@ export default function SearchGame() {
         <>
             <br></br>
             <h1 className="text-danger center-stuff">Search Game</h1>
-            <SearchComponent />
+            <div className="center-stuff">
+                <SearchComponent />
+            </div>
         </>
     )
 }

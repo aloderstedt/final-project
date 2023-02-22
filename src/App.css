@@ -15,6 +15,14 @@
   margin-left: 25%;
 }
 
+.text-red {
+  color: rgb(167, 0, 0);
+}
+
+.text-blue {
+  color: rgb(0, 0, 158);
+}
+
 .main-schema {
   background-image: url("Images/GameBackground.jpg");
 } 
@@ -25,8 +33,28 @@
   object-fit: contain;
 }
 
+#textbox {
+  height: 100px;
+  width: 350px;
+  font-size: small;
+}
+
 .button-group-stuff {
   width: 100%;
+}
+
+.ss-list {
+  display: inline-block;
+    height: 100%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-div {
+  background-color: rgba(147, 149, 156, 0.9);
+  text-align: center;
+  margin-left: 26%;
 }
 
 .journal-lists {

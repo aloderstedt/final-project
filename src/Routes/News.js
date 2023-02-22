@@ -24,17 +24,20 @@ export default class News extends React.Component {
                 <br></br>
                 <h1 className="center-stuff text-success">Video Game News</h1>
                 <br></br>
-                {this.state.newses.map((news) => (
-                    <>
-                        <Card className="newses"
-                            news={news}
-                            key={news.id}>
-                            <Link className="bg-dark text-white" to={news.link}><h6>{news.title}</h6></Link> 
-                            <Link to={news.link}> <img className="images" src={news.image} alt="news depiction"></img></Link>
-                        </Card>
-                        <br></br>
-                    </>
-                ))}
+                <ul>
+                    {
+                        this.state.newses.map((news) => (
+                            <li key={news.id}>
+                                <Card className="newses"
+                                 news={news}>
+                                <Link className="bg-dark text-white" to={news.link}><h6>{news.title}</h6></Link> 
+                                <Link to={news.link}> <img className="images" src={news.image} alt="news depiction"></img></Link>
+                                </Card>
+                                <br></br>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
         )
     }
