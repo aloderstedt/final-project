@@ -1,4 +1,5 @@
 import { useGameContext } from "../GameContext";
+import { GameNote } from "./GameNote";
 import axios from "axios";
 import '../App.css'
 import { useState } from "react";
@@ -9,11 +10,9 @@ import Button from "react-bootstrap/Button";
 
 const CompletedGame = () => {
     //Sends game data to completed games list
-    // let notes = []
-    // let currentGame = game;
-    // const [currentGame, setCurrentGame] = useState(game);
     const [game] = useGameContext();
-    const [ note, setNote ] = useState([]);
+    const [note, setNote] = useState('');
+    const [notes, setNotes] = useState([]);
 
     const handleChange = (e) => {
         setNote(e.target.value);
@@ -22,30 +21,27 @@ const CompletedGame = () => {
     useEffect(() => {
         axios.get(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`)
             .then(res => {
-                console.log(res);
+                setNotes(res);
             })
-    });
+    }, [game.id]);
 
-    const submitForm = () => {
-        
-        axios.post(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`, note)
+    const submitForm = (e) => {
+        e.preventDefault()
+        axios.post(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`, { note: note })
             .then((res) => {
-                console.log(note)
-                console.log(res)
             }).catch((err) => {
                 console.log(err);
-                setNote('')
             })
+        setNote('')
     };
 
     const deleteFromCompleted = () => {
         const data = { game };
         axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}`, data)
-        alert('Game Removed!')
             .catch(e => {
                 console.log(e)
-                
             }) 
+        alert('Game Removed!')
     };
 
 return (
@@ -74,27 +70,29 @@ return (
             <br></br>
             <br></br>
             <h2>Notes:</h2>
-            <form>
+            <div className="container">
+            <form className="col-12">
                 <input value={note} onChange={handleChange} type="text" placeholder="Enter a note" id="textbox">
                 </input>
                 <br></br>
                 <br></br>
                 <Button variant="outline-primary" type="submit" onClick={submitForm}>Add Note</Button>
-            </form>
+                </form>
+            </div>
             <br></br>
-            {
-                <ul>
-                    {
-
-                    }
-                </ul>
+            <GameNote notes={notes} />
+            {/* <ul>
+                {
+                    notes.map(notes => (
+                        <h6>{ notes.data.note }</h6>
+                 ))   
             }
+            </ul> */}
         </div>
          <div className="ss-list">
              { <ul>
                 {
                     game.game.short_screenshots.map((ss, i) => <li key={i}><img className="images" src={ss.image} alt='screenshot'></img></li>)
-
                  }
             </ul> }
          </div>

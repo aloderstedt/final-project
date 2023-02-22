@@ -25,8 +25,8 @@ export default class News extends React.Component {
                 <h1 className="center-stuff text-success">Video Game News</h1>
                 <br></br>
                     {
-                        this.state.newses.map((news) => (
-                            <div key={news.id}>
+                        this.state.newses.map((news, i) => (
+                            <div key={i}>
                                 <Card className="newses"
                                  news={news}>
                                 <Link className="bg-dark text-white" to={news.link}><h6>{news.title}</h6></Link> 

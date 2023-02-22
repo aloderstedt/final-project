@@ -22,19 +22,14 @@ const BacklogGame = () => {
         
     };
 
-    const deleteFromBacklog = async (game) => {
-        try {
-            const response = await fetch(`${'https://63ed97a45e9f1583bdb2b798.mockapi.io/final/backlog'}/${game.id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            return await response.json();
-        } catch (e) {
-            console.log('There seems to have been an error.', e);
-        }
-    }
+    const deleteFromBacklog = () => {
+        const data = { game };
+        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/backlog/${game.id}`, data)
+            .catch(e => {
+                console.log(e)
+            })
+        alert('Game Removed!')
+    };
 
 // We have to get chips after we get fish...
 // async getFishAndChips() {
