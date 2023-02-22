@@ -18,7 +18,7 @@ const BacklogGame = () => {
                 console.log(res)
                 alert('Game Moved!');
             }); 
-        axios.delete('https://63ed97a45e9f1583bdb2b798.mockapi.io/final/backlog', data.game);
+        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/backlog/${game.id}`, data);
         
     };
 

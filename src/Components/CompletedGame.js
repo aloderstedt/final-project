@@ -1,18 +1,19 @@
 import { useGameContext } from "../GameContext";
+import axios from "axios";
 import '../App.css'
 import { useState } from "react";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 // import ButtonGroup from "react-bootstrap/ButtonGroup";
-import axios from "axios";
+
 
 const CompletedGame = () => {
     //Sends game data to completed games list
     // let notes = []
     // let currentGame = game;
-    // const [ currentGame, setCurrentGame ] = useState(game);
+    // const [currentGame, setCurrentGame] = useState(game);
     const [game] = useGameContext();
-    const [ note, setNote ] = useState('');
+    const [ note, setNote ] = useState([]);
 
     const handleChange = (e) => {
         setNote(e.target.value);
@@ -29,6 +30,7 @@ const CompletedGame = () => {
         
         axios.post(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`, note)
             .then((res) => {
+                console.log(note)
                 console.log(res)
             }).catch((err) => {
                 console.log(err);
@@ -36,13 +38,14 @@ const CompletedGame = () => {
             })
     };
 
-    const deleteFromCompleted = async () => {
+    const deleteFromCompleted = () => {
         const data = { game };
-        await axios.delete('https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames', data.game)
+        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}`, data)
+        alert('Game Removed!')
             .catch(e => {
                 console.log(e)
-                alert('Game Deleted!')
-            })
+                
+            }) 
     };
 
 return (
