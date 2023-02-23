@@ -1,22 +1,28 @@
 import { useGameContext } from "../GameContext";
-import { GameNote } from "./GameNote";
+// import { GameNote } from "./GameNote";
 import axios from "axios";
 import '../App.css'
 import { useState } from "react";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-// import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 
 const CompletedGame = () => {
-    //Sends game data to completed games list
     const [game] = useGameContext();
     const [note, setNote] = useState('');
+    // const [currentGame, setCurrentGame] = useState('');
     const [notes, setNotes] = useState([]);
-
+    
     const handleChange = (e) => {
         setNote(e.target.value);
     }
+
+    // useEffect(() => {
+    //     axios.get(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}`)
+    //         .then(res => {
+    //             setCurrentGame(res);
+    //         })
+    // }, [game.id]);
 
     useEffect(() => {
         axios.get(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`)
@@ -25,11 +31,13 @@ const CompletedGame = () => {
             })
     }, [game.id]);
 
+    console.log(notes.data);
+    // console.log(currentGame);
+
     const submitForm = (e) => {
         e.preventDefault()
         axios.post(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`, { note: note })
-            .then((res) => {
-            }).catch((err) => {
+            .catch((err) => {
                 console.log(err);
             })
         setNote('')
@@ -55,12 +63,12 @@ return (
             <p className="text-blue"><strong>Rating: {game.game.rating} / 5</strong></p>
             <h3>Genre(s):</h3>
             {
-                 game.game.genres.map(g => `| ${g.name} | `)
+                game.game.genres.map(g => `| ${g.name} | `)
             }
 
              <h3>Platform(s):</h3>
             {
-                 game.game.platforms.map(p => `| ${p.platform.name} | `)
+                game.game.platforms.map(p => `| ${p.platform.name} | `)
              }
             <br></br>
              <br></br>
@@ -80,10 +88,9 @@ return (
                 </form>
             </div>
             <br></br>
-            <GameNote notes={notes} />
             {/* <ul>
                 {
-                    notes.map(notes => (
+                    notes.data.map(notes => (
                         <h6>{ notes.data.note }</h6>
                  ))   
             }
@@ -92,7 +99,7 @@ return (
          <div className="ss-list">
              { <ul>
                 {
-                    game.game.short_screenshots.map((ss, i) => <li key={i}><img className="images" src={ss.image} alt='screenshot'></img></li>)
+                    game.game.short_screenshots.map((ss, i) => <li key={i}><img className="images" src={ss.image} alt='screenshot'></img></li>) 
                  }
             </ul> }
          </div>
