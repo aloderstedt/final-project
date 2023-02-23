@@ -28,7 +28,7 @@ const BacklogGame = () => {
             .catch(e => {
                 console.log(e)
             })
-        alert('Game Removed!')
+        alert('Game Removed From List!')
     };
 
 // We have to get chips after we get fish...

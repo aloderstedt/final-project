@@ -2,16 +2,17 @@ import { useGameContext } from "../GameContext";
 // import { GameNote } from "./GameNote";
 import axios from "axios";
 import '../App.css'
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
+// import { GameNotes } from "./GameNotes";
 
 
 const CompletedGame = () => {
     const [game] = useGameContext();
     const [note, setNote] = useState('');
-    // const [currentGame, setCurrentGame] = useState('');
     const [notes, setNotes] = useState([]);
+    // const [currentGame, setCurrentGame] = useState('');
     
     const handleChange = (e) => {
         setNote(e.target.value);
@@ -24,22 +25,49 @@ const CompletedGame = () => {
     //         })
     // }, [game.id]);
 
-    useEffect(() => {
-        axios.get(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`)
-            .then(res => {
-                setNotes(res);
-            })
-    }, [game.id]);
+    // useEffect(() => {
+    //     fetch(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`)
+    //         .then(resp => resp.json())
+    //         .then(({ results }) => {
+    //             setNotes(results);
+    //         })
+    // }, [game.id]);
 
-    console.log(notes.data);
+    // console.log(notes);
+
+    const notesData = useCallback(async () => {
+        const data = await fetch(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`)
+        .then(data => data.json())
+        setNotes(data);
+    }, [game.id])
+
+    useEffect(() => {
+        notesData()
+            .catch(console.error);;
+    }, [notesData])
+
+    // useEffect(() => {
+    //     setNotes([])
+    //     axios.get(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`)
+    //         .then(res => {
+    //             console.log(res);
+    //             setNotes(res.data);
+    //         })
+    // }, [game.id]);
+
+    console.log(notes);
     // console.log(currentGame);
 
     const submitForm = (e) => {
+        if (note !== ''){
         e.preventDefault()
         axios.post(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${game.id}/notes`, { note: note })
             .catch((err) => {
                 console.log(err);
             })
+        } else {
+            alert('Cannot add a blank note!')
+        }
         setNote('')
     };
 
@@ -49,13 +77,12 @@ const CompletedGame = () => {
             .catch(e => {
                 console.log(e)
             }) 
-        alert('Game Removed!')
+        alert('Game Removed From List!')
     };
 
 return (
     <>
         <br></br>
-
         <br></br>
         <div className="detail-div col-6">
             <h1>{game.game.name}</h1>
@@ -86,16 +113,27 @@ return (
                 <br></br>
                 <Button variant="outline-primary" type="submit" onClick={submitForm}>Add Note</Button>
                 </form>
+                <br></br>
+                {/* {<>
+                    <h6>{notes[0].note}</h6>
+                    <h6>{notes[2].note}</h6>
+                </>
+                } */}
             </div>
             <br></br>
+            <div>
             {/* <ul>
                 {
-                    notes.data.map(notes => (
-                        <h6>{ notes.data.note }</h6>
+                    notes.map(notes, i => (
+                        <li key={i}>
+                            <h6>{notes.note}</h6>
+                        </li>
                  ))   
             }
-            </ul> */}
+                </ul> */}
+            </div>
         </div>
+        <br></br>
          <div className="ss-list">
              { <ul>
                 {

@@ -64,7 +64,10 @@ const GameDetail = () => {
                     <Button variant="outline-primary" onClick={completedSubmit}>Add To Completed List</Button>
                     <Button variant="outline-danger" onClick={backlogSubmit}>Add To Backlog List</Button>
                 </ButtonGroup>
+                <br></br>
+                <br></br>
             </div>
+            <br></br>
             <div className="ss-list">
                 <ul>
                 {

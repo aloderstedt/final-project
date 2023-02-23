@@ -6,6 +6,7 @@ import { useGameContext } from "../GameContext";
 export const Backlog = () => {
     const [, setGame] = useGameContext(); 
     const [games, updateGames] = useState([]);
+    // const [chosenGame, updateChosenGame] = useState('');
 
     const getBacklog = async () => {
         try {
@@ -22,6 +23,8 @@ export const Backlog = () => {
     React.useEffect(() => {
         getBacklog();
     }, []);
+
+    console.log(games);
 
     return(
         <div className = "col-4 journal-lists" >
