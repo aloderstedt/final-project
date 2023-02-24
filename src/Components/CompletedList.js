@@ -1,11 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useGameContext } from "../GameContext";
+// import { useGameContext } from "../GameContext";
 
 export const CompletedList = () => {
-    const [, setGame] = useGameContext(); 
+    // const [, setGame] = useGameContext(); 
     const [games, updateGames] = useState([]);
+    const [thisGame, setThisGame] = useState('');
+
+    console.log(thisGame)
 
     const getCompletedList = async () => {
         try {
@@ -31,10 +34,8 @@ export const CompletedList = () => {
                 {
                     games.map(games => (
                         <li key={games.id}>
-                            <Link to={{
-                                pathname: `/completed/${games.game.id}`
-                            }}>
-                                <h4 onClick={() => setGame(games)}>{games.game.name}</h4>
+                            <Link to={`/completed/${games.game.id}`} state={games}>
+                                <h4 onClick={() => setThisGame(games)}>{games.game.name}</h4>
                             </Link>
                         </li>
                     ))

@@ -1,13 +1,16 @@
-import { useGameContext } from "../GameContext";
+// import { useGameContext } from "../GameContext";
 import '../App.css'
+import React from 'react';
 import { Button, ButtonGroup } from "react-bootstrap";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
 // import { Alert } from "react-bootstrap";
 
 const GameDetail = () => {
-    //Sends game data to completed games list
-    const [game] = useGameContext()
-    
+    const location = useLocation();
+    const game = location.state.gameResults;
+    console.log(location.state.gameResults);
+
     const completedSubmit = (e) => {
         e.preventDefault();
 
@@ -43,20 +46,20 @@ const GameDetail = () => {
     return (
         <>
             <br></br>
-            
-            <br></br>
-        <div className="detail-div col-6">
-            <h1>{game.name}</h1>
-            <p>Released: {game.released}</p>
-            <p>Rating: {game.rating} / 5</p>
-            <h3>Genre(s):</h3>
-            {
-                game.genres.map(g => `| ${g.name} | `)
-            }
 
-            <h3>Platform(s):</h3>
-            {
-                game.platforms.map(p => `| ${p.platform.name} | `)
+            <br></br>
+            <div className="detail-div col-6">
+                <h1>{game.name}</h1>
+                <p>Released: {game.released}</p>
+                <p>Rating: {game.rating} / 5</p>
+                <h3>Genre(s):</h3>
+                {
+                    game.genres.map(g => `| ${g.name} | `)
+                }
+
+                <h3>Platform(s):</h3>
+                {
+                    game.platforms.map(p => `| ${p.platform.name} | `)
                 }
                 <br></br>
                 <br></br>
@@ -70,9 +73,9 @@ const GameDetail = () => {
             <br></br>
             <div className="ss-list">
                 <ul>
-                {
+                    {
                         game.short_screenshots.map((ss, i) => <li key={i}><img className="images" src={ss.image} alt='screenshot'></img></li>)
-                        
+
                     }
                 </ul>
             </div>

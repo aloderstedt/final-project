@@ -32,7 +32,7 @@ function App() {
       <Container>
         <Routes>
           <Route path='/' element={<Root />} />
-          <Route path='/news' element={ <News /> } />
+          <Route path='/news' element={<News />} />
           <Route path='/searchgame' element={<SearchGame />} />
           <Route path='/searchgame/:id' element={<GameDetail />} />
           <Route path='/completed/:id' element={<CompletedGame />} />

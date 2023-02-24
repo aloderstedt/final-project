@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useGameContext } from "../GameContext";
+// import { useGameContext } from "../GameContext";
 
 export const Backlog = () => {
-    const [, setGame] = useGameContext(); 
+    // const [, setGame] = useGameContext(); 
     const [games, updateGames] = useState([]);
+    const [thisGame, setThisGame] = useState('');
     // const [chosenGame, updateChosenGame] = useState('');
+
+    console.log(thisGame);
 
     const getBacklog = async () => {
         try {
@@ -26,19 +29,17 @@ export const Backlog = () => {
 
     console.log(games);
 
-    return(
-        <div className = "col-4 journal-lists" >
+    return (
+        <div className="col-4 journal-lists" >
             <h1 className="center-stuff">Backlog</h1>
             <hr></hr>
             <ul>
                 {
                     games.map(games => (
                         <li key={games.id}>
-                            <Link to={{
-                                pathname: `/backlog/${games.game.id}`
-                            }}>
+                            <Link to={`/backlog/${games.game.id}`} state={games}>
                                 {/* When the title is clicked, we update the game context globally! */}
-                                <h4 onClick={() => setGame(games)}>{games.game.name}</h4>
+                                <h4 onClick={() => setThisGame(games)}>{games.game.name}</h4>
                             </Link>
                         </li>
                     ))
@@ -47,6 +48,3 @@ export const Backlog = () => {
         </div>
     );
 };
-
-
-
