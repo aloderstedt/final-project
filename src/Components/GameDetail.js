@@ -1,10 +1,8 @@
-// import { useGameContext } from "../GameContext";
 import '../App.css'
 import React from 'react';
 import { Button, ButtonGroup } from "react-bootstrap";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
-// import { Alert } from "react-bootstrap";
 
 const GameDetail = () => {
     const location = useLocation();
