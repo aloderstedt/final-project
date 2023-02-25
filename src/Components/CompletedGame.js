@@ -18,7 +18,6 @@ const CompletedGame = () => {
     const location = useLocation();
     const game = location.state.game;
     const gameId = location.state.id;
-    const data = location.state;
 
     const handleChange = (e) => {
         setNote(e.target.value);
@@ -41,6 +40,7 @@ const CompletedGame = () => {
         if (note !== '') {
             e.preventDefault()
             axios.post(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}/notes`, { note: note })
+                .then(() => notesData())
                 .catch((err) => {
                     console.log(err);
                 })
@@ -51,22 +51,36 @@ const CompletedGame = () => {
         }
     };
 
-    const deleteNote = () => {
+    const deleteNote = (id) => {
         console.log(notes);
-        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}/notes/${notes.id}`, { notes })
+        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}/notes/${id}`)
+            .then(() => {
+                notesData()
+            })
             .catch(e => {
                 console.log(e)
             })
         alert('Note Deleted!')
     }
 
-    // const editNote = () => {
+    const editNote = async (note, newValue) => {
+        if (newValue) {
+            try {
+                await axios.put(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}/notes/${note.id}`, { ...note, note: newValue })
+                await notesData()
         
-    // }
+    } catch (error) {
+        console.log(error)
+    }
+            alert('Note Edited!')
+        } else {
+            alert('Must enter valid note')
+        }
+}
 
     const deleteFromCompleted = () => {
 
-        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}`, data)
+        axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}`)
             .catch(e => {
                 console.log(e)
             })
@@ -77,7 +91,7 @@ const CompletedGame = () => {
         <>
             <br></br>
             <br></br>
-            <div className="detail-div col-8">
+            <div className="detail-div-two col-8">
                 <h1>{game.name}</h1>
                 <p className="text-red"><strong>Released: {game.released}</strong></p>
                 <p className="text-blue"><strong>Rating: {game.rating} / 5</strong></p>
@@ -118,8 +132,8 @@ const CompletedGame = () => {
                         {
                             notes.map((n, i) =>
                                 <li key={i}><p className="notes-text"><em>{n.note}</em>
-                                    <IconButton onClick={deleteNote} aria-label="delete"><DeleteIcon /></IconButton>
-                                    <IconButton aria-label="edit"><EditIcon /></IconButton></p></li>)
+                                    <IconButton onClick={() => deleteNote(n.id)} aria-label="delete"><DeleteIcon /></IconButton>
+                                    <IconButton onClick={() => editNote(n, prompt('Enter a new note'))} aria-label="edit"><EditIcon /></IconButton></p></li>)
                         }
                     </ol>}
                 </div>

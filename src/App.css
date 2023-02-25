@@ -1,6 +1,93 @@
+#backlog-heading {
+  color: rgb(0, 0, 0);
+    font-size: 40px;
+    font-weight: 600;
+    text-shadow: 0px 0px 5px #383838, 0px 0px 10px #252525, 0px 0px 10px #424142,
+      0px 0px 20px #626263;
+}
+
+.backlog-list {
+  display: inline-block;
+  position: fixed;
+  height: 83%;
+  margin-left: 40%;
+  border-radius: 20px;
+  background-color: rgba(147, 149, 156, 0.3);
+  overflow-y: auto
+}
+
+.button-group-stuff {
+  width: 100%;
+}
+
 .center-stuff {
+  margin-right: 4%;
   display: flex;
   justify-content: center;
+}
+
+.completed-list {
+  display: inline-block;
+  position: fixed;
+  height: 83%;
+  margin-right: 40%;
+  border-radius: 20px;
+  background-color: rgba(147, 149, 156, 0.3);
+  overflow-y: auto
+}
+
+#completed-heading {
+  color: rgb(0, 0, 0);
+    font-size: 40px;
+    font-weight: 600;
+    text-shadow: 0px 0px 5px #383838, 0px 0px 10px #252525, 0px 0px 10px #424142,
+      0px 0px 20px #626263;
+}
+
+.detail-div {
+  background-color: rgba(147, 149, 156, 0.9);
+  text-align: center;
+  margin-left: 22.5%;
+  border-radius: 4%;
+}
+
+.detail-div-two {
+  background-color: rgba(147, 149, 156, 0.9);
+    text-align: center;
+    margin-left: 15%;
+    border-radius: 4%;
+}
+
+hr {
+  top: 20px;
+  border: none;
+  height: 12px;
+  background: black;
+  margin-bottom: 50px;
+}
+
+.heading {
+  color: rgb(255, 208, 0);
+  font-size: 50px;
+  font-weight: 600;
+  text-shadow: 0px 0px 5px #67636b, 0px 0px 10px #a39d70, 0px 0px 10px #9b9a6c,
+    0px 0px 20px #aaac8d;
+}
+
+.images {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.journal-layout {
+  margin-right: 5%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-schema {
+  background-image: url("Images/GameBackground.jpg");
 }
 
 #nav-links {
@@ -12,25 +99,31 @@
   justify-content: center;
   text-align: center;
   width: 60%;
-  margin-left: 17%;
+  margin-left: 18%;
 }
 
-.text-red {
-  color: rgb(167, 0, 0);
+.search {
+  display: inline-block;
+  width: 40%;
+  position: inherit;
+    height: 83%;
+    margin-left: 26%;
+    border-radius: 20px;
+    background-color: rgba(147, 149, 156, 0.8);
+    overflow-y: auto
+}
+
+.ss-list {
+  margin-right: 7.5%;
+  display: inline-block;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .text-blue {
   color: rgb(0, 0, 158);
-}
-
-.main-schema {
-  background-image: url("Images/GameBackground.jpg");
-}
-
-.images {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 #textbox {
@@ -39,44 +132,6 @@
   font-size: small;
 }
 
-.button-group-stuff {
-  width: 100%;
-}
-
-.ss-list {
-  display: inline-block;
-  height: 100%;
-  overflow-y: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.detail-div {
-  background-color: rgba(147, 149, 156, 0.9);
-  text-align: center;
-  margin-left: 16%;
-  border-radius: 4%;
-}
-
-.journal-lists {
-  display: inline-block;
-  height: 83%;
-
-  border-radius: 20px;
-  background-color: rgba(147, 149, 156, 0.9);
-  overflow-y: auto
-}
-
-.search {
-  display: inline-block;
-  height: 83%;
-  position: absolute;
-  border-radius: 20px;
-  background-color: rgba(147, 149, 156, 0.9);
-  overflow-y: auto
-}
-
-.journal-layout {
-  display: flex;
-  justify-content: space-around;
+.text-red {
+  color: rgb(167, 0, 0);
 }

@@ -27,8 +27,8 @@ export const CompletedList = () => {
     }, []);
 
     return (
-        <div className="col-4 journal-lists" >
-            <h1 className="center-stuff">Completed</h1>
+        <div className="col-4 completed-list" >
+            <h1 id="completed-heading" className="center-stuff">Completed</h1>
             <hr></hr>
             <ul>
                 {

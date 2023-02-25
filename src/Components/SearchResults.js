@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { useGameContext } from '../GameContext';
-// import GameDetail from './GameDetail';
 
 const SearchResults = ({ gameResults }) => { // destructure the props for easier access
 

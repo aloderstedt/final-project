@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import GameDetail from '../Components/GameDetail';
 import SearchResults from '../Components/SearchResults';
+import { Button } from 'react-bootstrap';
 //import GamePanel from './GamePanel';
 //import { Link } from 'react-router-dom';
 
@@ -29,18 +30,19 @@ const SearchGame = () => {
     }
 
     return (
-        <div className='center-stuff'>
-            <div className="search col-4">
-                <br></br>
-                <form className='' onSubmit={onSubmit}>
-                    <input className='input-css' type="text" value={searchTerm} onChange={handleChange} />
+        <>
+            <br></br>
+            <h1 className='heading center-stuff'>Search Any Game</h1>
+            <div className="search">
+                <form onSubmit={onSubmit}>
+                    <input className='form-control' type="text" value={searchTerm} onChange={handleChange} />
                     <br></br>
-                    <input type="submit" />
+                    <Button variant='outline-primary' type="submit" >Search</Button>
                 </form>
                 <SearchResults gameResults={gameResults} updateSelected={setSelectedGame} />
                 {selectedGame && <GameDetail data={selectedGame} />}
-            </div>
         </div>
+    </>
     );
 }
 

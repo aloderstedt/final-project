@@ -22,7 +22,7 @@ export default class News extends React.Component {
         return (
             <div>
                 <br></br>
-                <h1 className="center-stuff text-success">Video Game News</h1>
+                <h1 className="center-stuff heading">Video Game News</h1>
                 <br></br>
                     {
                         this.state.newses.map((news, i) => (

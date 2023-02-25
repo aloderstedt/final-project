@@ -30,8 +30,8 @@ export const Backlog = () => {
     console.log(games);
 
     return (
-        <div className="col-4 journal-lists" >
-            <h1 className="center-stuff">Backlog</h1>
+        <div className="col-4 backlog-list" >
+            <h1 id="backlog-heading" className="center-stuff">Backlog</h1>
             <hr></hr>
             <ul>
                 {

@@ -7,7 +7,7 @@ export default function Journal() {
     return (
         <>
             <br></br>
-            <h1 className="text-warning center-stuff">The Game Journal</h1>
+            <h1 className="heading center-stuff">The Game Journal</h1>
             <div className='journal-layout'>
                 <CompletedList />
                 <Backlog />
