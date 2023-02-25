@@ -60,6 +60,10 @@ const CompletedGame = () => {
         alert('Note Deleted!')
     }
 
+    // const editNote = () => {
+        
+    // }
+
     const deleteFromCompleted = () => {
 
         axios.delete(`https://63ed97a45e9f1583bdb2b798.mockapi.io/final/completedgames/${gameId}`, data)

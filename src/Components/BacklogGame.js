@@ -37,7 +37,7 @@ const BacklogGame = () => {
             <br></br>
 
             <br></br>
-            <div className="detail-div col-6">
+            <div className="detail-div col-8">
                 <h1>{game.name}</h1>
                 <p className="text-red"><strong>Released: {game.released}</strong></p>
                 <p className="text-blue"><strong>Rating: {game.rating} / 5</strong></p>
